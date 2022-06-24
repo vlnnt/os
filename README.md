@@ -1,11 +1,6 @@
 # COMPILE "OS"
 
-    i386-elf-gcc -ffreestanding -c kernel.c -o kernel.o
-    nasm kernel.s -f elf -o kernel.o
-    i386-elf-ld -o kernel.bin -Ttext 0x1000 kernel.o kernel.o --oformat binary
-    nasm boot.s -f bin -o boot.bin
-    cat boot.bin kernel.bin > os.bin
-    qemu-system-x86_64 -fda os.bin
+    i386-elf-gcc -ffreestanding -c kernel.c -o kernel.o && nasm kernel.s -f elf -o kernel.o && i386-elf-ld -o kernel.bin -Ttext 0x1000 kernel.o kernel.o --oformat binary && nasm boot.s -f bin -o boot.bin && cat boot.bin kernel.bin > os.bin && qemu-system-x86_64 -fda os.bin
     
  # USEFUL MATERIALS THAT I USED
  
